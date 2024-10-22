@@ -63,7 +63,6 @@ Reemplaza **minikube-ip** con la IP obtenida al ejecutar
 ```bash
 minikube ip.
 ```
-```
 
 ## Verificación de Estado
 
