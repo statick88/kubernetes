@@ -17,7 +17,7 @@ Asegúrate de tener instalados y configurados los siguientes componentes:
 ```bash
 minikube start
 ```
-Instala Istio: Descarga e instala Istio utilizando el siguiente comando:
+**Instala Istio:** Descarga e instala Istio utilizando el siguiente comando:
 
 ```bash
 curl -L https://istio.io/downloadIstio | sh -
@@ -28,18 +28,20 @@ Luego navega al directorio de Istio y agrega el binario al PATH:
 cd istio-<version>
 export PATH=$PWD/bin:$PATH
 ```
-Aplica los CRDs de Istio:
+
+## Aplica los CRDs de Istio:
 
 ```bash
 istioctl install --set profile=demo -y
 ```
+
 Construye la imagen Docker:
 
 ```bash
 docker build -t statick/flask-hello-world .
 ```
 
-Aplica los archivos de configuración: Asegúrate de que tus archivos deployment.yaml, service.yaml, gateway.yaml y virtualservice.yaml estén correctamente configurados.
+Aplica los archivos de configuración: Asegúrate de que tus archivos deployment.yaml, service.yaml, gateway.yaml y virtualservice.yaml estén correctamente configurados. Luego aplica la configuración:
 
 ```bash
 kubectl apply -f deployment.yaml
@@ -47,22 +49,20 @@ kubectl apply -f service.yaml
 kubectl apply -f gateway.yaml
 kubectl apply -f virtualservice.yaml
 ```
-## Acceso a la Aplicación
 
+## Acceso a la Aplicación
 Para acceder a tu aplicación a través del istio-ingressgateway, ejecuta:
 
 ```bash
 kubectl port-forward svc/istio-ingressgateway -n istio-system 8080:80
 ```
+
 Luego, abre tu navegador y visita:
 
-[http://minikube-ip:8080](http://minikube-ip:8080)
-
-Reemplaza **minikube-ip** con la IP obtenida al ejecutar 
-
-```bash
-minikube ip.
 ```
+http://localhost:8080
+```
+Esto te permitirá acceder a tu aplicación Flask que está corriendo en Kubernetes a través de Istio.
 
 ## Verificación de Estado
 
@@ -72,14 +72,21 @@ Para verificar el estado de los servicios y pods en tu clúster, puedes usar los
 kubectl get pods
 kubectl get svc -n istio-system
 ```
-## Despliegue y Gestión
+Esto te ayudará a asegurarte de que todo esté funcionando correctamente y a diagnosticar problemas si es necesario.
 
-Para actualizar tu aplicación, puedes hacer cambios en tu código, reconstruir la imagen y volver a aplicar los archivos de configuración.
+# Despliegue y Gestión
 
-## Contribuciones
+Para actualizar tu aplicación, puedes hacer cambios en tu código, reconstruir la imagen y volver a aplicar los archivos de configuración:
+
+```bash
+docker build -t statick/flask-hello-world .
+kubectl apply -f deployment.yaml
+```
+
+# Contribuciones
 
 Las contribuciones son bienvenidas. Siéntete libre de abrir un problema o enviar un pull request.
 
-## Licencia
+# Licencia
 
 Este proyecto está bajo la Licencia MIT - consulta el archivo LICENSE para más detalles.
