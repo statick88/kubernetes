@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-hello-world
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-hello-world
+  template:
+    metadata:
+      labels:
+        app: flask-hello-world
+    spec:
+      containers:
+      - name: flask-hello-world
+        image: statick/flask-hello-world:latest  # Asegúrate de que este nombre sea correcto
+        ports:
+        - containerPort: 5000
+

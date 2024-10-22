@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: flask-hello-world
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - flask-hello-world-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: flask-hello-world
+        port:
+          number: 5000
+
