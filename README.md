@@ -56,7 +56,7 @@ kubectl port-forward svc/istio-ingressgateway -n istio-system 8080:80
 ```
 Luego, abre tu navegador y visita:
 
-[http://<minikube-ip>:8080](http://<minikube-ip>:8080)
+[http://minikube-ip:8080](http://minikube-ip:8080)
 
 Reemplaza **minikube-ip** con la IP obtenida al ejecutar minikube ip.
 
