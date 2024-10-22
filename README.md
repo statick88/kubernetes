@@ -56,11 +56,11 @@ kubectl port-forward svc/istio-ingressgateway -n istio-system 8080:80
 ```
 Luego, abre tu navegador y visita:
 
-<http://<minikube-ip>:8080
+[http://<minikube-ip>:8080](http://<minikube-ip>:8080)
 
-Reemplaza <minikube-ip> con la IP obtenida al ejecutar minikube ip.
+Reemplaza **minikube-ip** con la IP obtenida al ejecutar minikube ip.
 
-Verificación de Estado
+## Verificación de Estado
 
 Para verificar el estado de los servicios y pods en tu clúster, puedes usar los siguientes comandos:
 
